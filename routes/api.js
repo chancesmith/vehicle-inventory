@@ -22,7 +22,10 @@ router.put('/vehicles/:id', function (req, res, next) {
 
 // get list of inventory from db
 router.delete('/vehicles/:id', function (req, res, next) {
-  res.send({ type: "DELETE" })
+  Vehicle.findByIdAndRemove({_id: req.params.id})
+    .then( function (vehicle) {
+      res.send(vehicle)
+    }).catch(next)
 })
 
 module.exports = router

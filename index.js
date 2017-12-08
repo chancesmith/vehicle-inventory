@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const app = express()
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost/vehicles')
+mongoose.connect('mongodb://localhost/vehicle-inventory')
 mongoose.Promise = global.Promise
 
 app.use(bodyParser.json())
