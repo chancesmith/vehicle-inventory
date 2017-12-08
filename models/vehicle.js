@@ -5,19 +5,19 @@ const Schema = mongoose.Schema
 const VehiclesSchema = new Schema ({
 	make:{
     type: String,
-    require: [true, 'Make field is required']
+    required: [true, 'Make field is required']
   },
   model:{
     type: String,
-    require: [true, 'Model field is required']
+    required: [true, 'Model field is required']
   },
   vin:{
     type: String,
-    require: [true, 'VIN field is required']
+    required: [true, 'VIN field is required']
   },
   dealer:{
     type: String,
-    require: [true, 'Dealer field is required']
+    required: [true, 'Dealer field is required']
   }
 })
 
