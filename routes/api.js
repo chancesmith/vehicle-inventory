@@ -15,9 +15,14 @@ router.post('/vehicles', function (req, res, next) {
     }).catch(next)
 })
 
-// get list of inventory from db
+// update single vehicle
 router.put('/vehicles/:id', function (req, res, next) {
-  res.send({ type: "PUT" })
+  Vehicle.findByIdAndUpdate({_id: req.params.id}, req.body)
+  .then( function () {
+    Vehicle.findOne({_id: req.params.id}).then(function (vehicle) {
+      res.send(vehicle)
+    })
+  }).catch(next)
 })
 
 // get list of inventory from db
