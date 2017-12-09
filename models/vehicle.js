@@ -1,6 +1,18 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+// create geolocation Schema
+const GeoSchema = new Schema({
+  type: {
+    type: String,
+    default: "Point"
+  },
+  coordinates: {
+    type: [Number],
+    index: '2dsphere'
+  }
+})
+
 // create vehicles Schema & model
 const VehiclesSchema = new Schema ({
 	make:{
@@ -18,7 +30,8 @@ const VehiclesSchema = new Schema ({
   dealer:{
     type: String,
     required: [true, 'Dealer field is required']
-  }
+  },
+  geometry: GeoSchema
 })
 
 const Vehicle = mongoose.model('vehicles', VehiclesSchema)

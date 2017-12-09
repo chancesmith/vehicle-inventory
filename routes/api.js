@@ -4,7 +4,15 @@ const Vehicle = require('../models/vehicle')
 
 // get list of inventory from db
 router.get('/vehicles', function (req, res, next) {
-  res.send({ type: "GET" })
+  // Vehicle.find({}).then(function (vehicles) {
+  //   res.send(vehicles)
+  // })
+  Vehicle.geoNear(
+    {type: 'Point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]},
+    {maxDistance: 1000000, spherical: true}
+  ).then(function (vehicles) {
+    res.send(vehicles)
+  })
 })
 
 // add new vehicle into db
